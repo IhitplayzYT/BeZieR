@@ -1,7 +1,9 @@
 use crate::helper::Helper::CLI;
+use crate::ui::run_app;
 
 mod helper;
 mod model;
+mod ui;
 
 fn main() {
     let mut clargs = CLI::new();
@@ -11,5 +13,7 @@ fn main() {
         println!("{clargs:?}");
     }
 
-    println!("Hello, world!");
+    if let Err(e) = run_app() {
+        eprintln!("Error running application: {}", e);
+    }
 }
